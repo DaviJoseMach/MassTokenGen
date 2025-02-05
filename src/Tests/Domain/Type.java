@@ -14,7 +14,7 @@ public class Type {
     };
 
     public void typeInsert(){
-        System.out.println("--- Digite as alterações feitas ---");
+        System.out.println("--- Enter the changes made ---");
         Scanner input = new Scanner(System.in);
         String inputType = input.nextLine();
 
@@ -23,7 +23,7 @@ public class Type {
         for(String type : inType){
             type = type.trim();
             if(!isValidType(type)){
-                System.out.println("❌ Tipo de alteração invalida");
+                System.out.println("❌ Invalidi type");
             }
         }
     }
