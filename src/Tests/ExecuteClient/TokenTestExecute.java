@@ -1,12 +1,11 @@
 package Tests.ExecuteClient;
 
 import Tests.Domain.TokenT;
-import Tests.Domain.Type;
+
 
 public class TokenTestExecute {
     public static void main(String[] args) {
-        Type types = new Type();
-        types.typeInsert();
-
+    TokenT token = new TokenT(1);
+    token.insertTokenInfosInitial();  token.typeInsert(); token.returnToken();
     }
 }

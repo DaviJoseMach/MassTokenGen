@@ -1,25 +1,81 @@
 package Tests.Domain;
 
-
 import java.util.Scanner;
 
 public class TokenT {
+    private String[][] types = {
+            {"chore", "1"},
+            {"docs", "2"},
+            {"feat", "3"},
+            {"fix", "4"},
+            {"refactor", "5"},
+            {"style", "6"},
+            {"test", "7"}
+    };
+
     private int testId;
+    private String projectName;
+    private String branchName;
+    private String date;
+    private String selectedTypes = "";
 
     public TokenT(int testId) {
         this.testId = testId;
     }
 
-    public void insertTokenInfosInitial(){
-        Scanner inputInitial = new Scanner(System.in);
+    public void insertTokenInfosInitial() {
+        Scanner input = new Scanner(System.in);
 
         System.out.println("--- Enter the project name ---");
-        String inputProjectName = inputInitial.nextLine();
+        this.projectName = input.nextLine();
+
         System.out.println("-- Enter your branch name --");
-        String inputBranchName = inputInitial.nextLine();
+        this.branchName = input.nextLine();
+
         System.out.println("- Enter today's date -");
-        String inputDate = inputInitial.nextLine();
+        this.date = input.nextLine();
     }
 
+    public void typeInsert() {
+        System.out.println("--- Enter the changes (comma-separated) ---");
+        Scanner input = new Scanner(System.in);
+        String inputType = input.nextLine();
 
+        String[] inType = inputType.split(",");
+        StringBuilder typesString = new StringBuilder();
+
+        for (String type : inType) {
+            type = type.trim();
+            String typeNumber = getTypeNumber(type);
+            if (typeNumber == null) {
+                System.out.println("❌ Invalid type: " + type);
+            } else {
+                typesString.append(typeNumber);
+            }
+        }
+        if (typesString.length() > 0) {
+            typesString.setLength(typesString.length() - 1);
+        }
+
+        this.selectedTypes = typesString.toString();
+    }
+
+    private String getTypeNumber(String type) {
+        for (String[] entry : types) {
+            if (entry[0].equals(type)) {
+                return entry[1];
+            }
+        }
+        return null;
+    }
+
+    public void returnToken() {
+        if (selectedTypes.isEmpty()) {
+            System.out.println("⚠️ No valid types were entered.");
+            return;
+        }
+
+        String token = selectedTypes + "(" + projectName + ":" + branchName + ")" + this.date;
+        System.out.println("\n---- Your token ----\n" + token);
+    }
 }
