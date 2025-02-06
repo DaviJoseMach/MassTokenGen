@@ -12,7 +12,6 @@ public class TokenT {
             {"style", "6"},
             {"test", "7"}
     };
-
     private int testId;
     private String projectName;
     private String branchName;
@@ -28,19 +27,17 @@ public class TokenT {
 
         System.out.println("--- Enter the project name ---");
         this.projectName = input.nextLine();
-
         System.out.println("-- Enter your branch name --");
         this.branchName = input.nextLine();
-
         System.out.println("- Enter today's date -");
         this.date = input.nextLine();
     }
 
     public void typeInsert() {
-        System.out.println("--- Enter the changes (comma-separated) ---");
         Scanner input = new Scanner(System.in);
-        String inputType = input.nextLine();
 
+        System.out.println("--- Enter the changes (comma-separated) ---");
+        String inputType = input.nextLine();
         String[] inType = inputType.split(",");
         StringBuilder typesString = new StringBuilder();
 
@@ -52,12 +49,7 @@ public class TokenT {
             } else {
                 typesString.append(typeNumber);
             }
-        }
-        if (typesString.length() > 0) {
-            typesString.setLength(typesString.length() - 1);
-        }
-
-        this.selectedTypes = typesString.toString();
+        } this.selectedTypes = typesString.toString();
     }
 
     private String getTypeNumber(String type) {
@@ -65,17 +57,14 @@ public class TokenT {
             if (entry[0].equals(type)) {
                 return entry[1];
             }
-        }
-        return null;
+        }  return null;
     }
 
     public void returnToken() {
         if (selectedTypes.isEmpty()) {
             System.out.println("⚠️ No valid types were entered.");
             return;
-        }
-
-        String token = selectedTypes + "(" + projectName + ":" + branchName + ")" + this.date;
+        } String token = selectedTypes + "(" + projectName + ":" + branchName + ")" + this.date;
         System.out.println("\n---- Your token ----\n" + token);
     }
 }
