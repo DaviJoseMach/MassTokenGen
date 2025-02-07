@@ -24,14 +24,26 @@ public class TokenT {
 
     public void insertTokenInfosInitial() {
         Scanner input = new Scanner(System.in);
+        boolean checkValidString;
 
-        System.out.println("--- Enter the project name ---");
-        this.projectName = input.nextLine();
-        System.out.println("-- Enter your branch name --");
-        this.branchName = input.nextLine();
-        System.out.println("- Enter today's date -");
-        this.date = input.nextLine();
+        do {
+            System.out.println("--- Enter the project name ---");
+            this.projectName = input.nextLine();
+            System.out.println("-- Enter your branch name --");
+            this.branchName = input.nextLine();
+            System.out.println("- Enter today's date -");
+            this.date = input.nextLine();
+
+            checkValidString = this.projectName == null || this.projectName.isEmpty() ||
+                    this.branchName == null || this.branchName.isEmpty() ||
+                    this.date == null || this.date.isEmpty();
+
+            if (checkValidString) {
+                System.out.println("⚠️ You did not fill in all the parameters. Please try again.");
+            }
+        } while (checkValidString);
     }
+
 
     public void typeInsert() {
         Scanner input = new Scanner(System.in);
@@ -65,6 +77,6 @@ public class TokenT {
             System.out.println("⚠️ No valid types were entered.");
             return;
         } String token = selectedTypes + "(" + projectName + ":" + branchName + ")" + this.date;
-        System.out.println("\n---- Your token ----\n" + token);
+        System.out.println("\n---- 🎟️ Your token ----\n" + token);
     }
 }
