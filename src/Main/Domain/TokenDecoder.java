@@ -18,8 +18,15 @@ public class TokenDecoder {
 
     public void insertToken(){
         Scanner input = new Scanner(System.in);
-        System.out.println("🧾 Insert your token:");
-        token = input.nextLine();
+        while (true){
+            System.out.println("🧾 Insert your token:");
+            token = input.nextLine().trim();
+            if(!token.isEmpty()){
+                break;
+            }
+            System.out.println("⚠️ Token cannot be empty. Try again.");
+        }
+
     }
 
     public void breakToken() {
@@ -27,7 +34,6 @@ public class TokenDecoder {
             System.out.println("❌ Invalid token format");
             return;
         }
-
 
         int parenStart = token.indexOf("(");
         String typeNumbers = token.substring(0, parenStart);
