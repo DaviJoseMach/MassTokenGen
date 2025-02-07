@@ -5,7 +5,7 @@ import Tests.Domain.TokenT;
 
 import java.util.Scanner;
 
-public class TesteMain {
+public class TestMain {
     public static void main(String[] args) {
         TokenT token = new TokenT(1);
         DecoToken decoToken = new DecoToken();
