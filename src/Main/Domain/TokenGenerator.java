@@ -52,6 +52,7 @@ public class TokenGenerator {
             String typeNumber = getTypeNumber(type);
             if (typeNumber == null) {
                 System.out.println("❌ Invalid type: " + type);
+                System.out.println("--- Type List --- \n chore | docs | feat | fix | refactor | style | test");
             } else {
                 typesString.append(typeNumber);
             }
