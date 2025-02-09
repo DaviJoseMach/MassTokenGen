@@ -55,7 +55,6 @@ public class DecoToken {
             decodedTypes.setLength(decodedTypes.length() - 2);
         }
 
-
         System.out.println("\n🔍 Token Breakdown:");
         System.out.println("🛠 Types: " + decodedTypes);
         System.out.println("📂 Project Name: " + projectName);
@@ -68,9 +67,6 @@ public class DecoToken {
             if (entry[1].equals(number)) {
                 return entry[0];
             }
-        }
-        return null;
+        } return null;
     }
-
-
 }
